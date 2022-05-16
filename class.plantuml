@@ -1,0 +1,343 @@
+@startuml Class Diagram
+set namespaceSeparator ::
+skinparam Style strictuml
+class "aou_nursery::babysitter::babysitter_main.dart::Babysitter_Main" {
+  {static} +String routeName
+  +State<Babysitter_Main> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::babysitter::babysitter_main.dart::Babysitter_Main"
+
+class "aou_nursery::babysitter::babysitter_main.dart::_Babysitter_MainState" {
+  -FirebaseAuth _auth
+  +User signedInUsrer
+  +Widget build()
+  +Widget buildHeaderData()
+  +Widget buildNotificationPanel()
+  +Widget buildBodyCardTitle()
+  +Widget buildNewsItem()
+}
+
+"aou_nursery::babysitter::babysitter_main.dart::_Babysitter_MainState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"aou_nursery::babysitter::babysitter_main.dart::_Babysitter_MainState" o-- "firebase_auth::firebase_auth.dart::User"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::babysitter::babysitter_main.dart::_Babysitter_MainState"
+
+class "aou_nursery::babysitter::children.dart::Children" {
+  {static} +String routeName
+  +State<Children> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::babysitter::children.dart::Children"
+
+class "aou_nursery::babysitter::children.dart::_ChildrenState" {
+  +Stream<List<ChildInfo>> readUsers()
+  +Widget buildUser()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::babysitter::children.dart::_ChildrenState"
+
+class "aou_nursery::loginPage::babysitter_screen.dart::BabysitterLogin" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::loginPage::babysitter_screen.dart::BabysitterLogin"
+
+class "aou_nursery::loginPage::intro_screen.dart::IntroScreen" {
+  +bool isLoding
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::loginPage::intro_screen.dart::IntroScreen"
+
+class "aou_nursery::loginPage::parents_screen.dart::ParentsLogin" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::loginPage::parents_screen.dart::ParentsLogin"
+
+class "aou_nursery::main.dart::MyApp" {
+  -FirebaseAuth _auth
+  +Widget build()
+}
+
+"aou_nursery::main.dart::MyApp" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::main.dart::MyApp"
+
+class "aou_nursery::mainFunctions::chats::chat.dart::Chat_Screen" {
+  {static} +String routeName
+  +State<Chat_Screen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::chats::chat.dart::Chat_Screen"
+
+class "aou_nursery::mainFunctions::chats::chat.dart::_Chat_ScreenState" {
+  +TextEditingController messageTextController
+  -FirebaseAuth _auth
+  +String? messageText
+  +void initState()
+  +void getCurrentUser()
+  +Widget build()
+}
+
+"aou_nursery::mainFunctions::chats::chat.dart::_Chat_ScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"aou_nursery::mainFunctions::chats::chat.dart::_Chat_ScreenState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::chats::chat.dart::_Chat_ScreenState"
+
+class "aou_nursery::mainFunctions::chats::chat.dart::MessageStreamBuilder" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::mainFunctions::chats::chat.dart::MessageStreamBuilder"
+
+class "aou_nursery::mainFunctions::chats::chat.dart::MessageLine" {
+  +String? sender
+  +String? text
+  +bool isMe
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::mainFunctions::chats::chat.dart::MessageLine"
+
+class "aou_nursery::mainFunctions::Nursery_photos::babysitter_pics.dart::Babysitter_uploadPics" {
+  {static} +String routeName
+  +State<Babysitter_uploadPics> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::Nursery_photos::babysitter_pics.dart::Babysitter_uploadPics"
+
+class "aou_nursery::mainFunctions::Nursery_photos::babysitter_pics.dart::_Babysitter_uploadPicsState" {
+  +Widget build()
+  +Widget buildNotificationPanel()
+  +Widget buildNewsItem()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::Nursery_photos::babysitter_pics.dart::_Babysitter_uploadPicsState"
+
+class "aou_nursery::mainFunctions::Nursery_photos::photo.dart::AddImage" {
+  {static} +String routeName
+  +State<AddImage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::Nursery_photos::photo.dart::AddImage"
+
+class "aou_nursery::mainFunctions::Nursery_photos::photo.dart::_AddImageState" {
+  -File? _image
+  +ImagePicker imagePicker
+  +String? downloadURL
+  +Future<dynamic> imagePickerMethod()
+  +Future<dynamic> uploadimageMethod()
+  +dynamic showSnackBar()
+  +Widget build()
+}
+
+"aou_nursery::mainFunctions::Nursery_photos::photo.dart::_AddImageState" o-- "dart::io::File"
+"aou_nursery::mainFunctions::Nursery_photos::photo.dart::_AddImageState" o-- "image_picker::image_picker.dart::ImagePicker"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::Nursery_photos::photo.dart::_AddImageState"
+
+class "aou_nursery::mainFunctions::Nursery_photos::photo_home.dart::Show_Upload" {
+  {static} +String routeName
+  +State<Show_Upload> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::Nursery_photos::photo_home.dart::Show_Upload"
+
+class "aou_nursery::mainFunctions::Nursery_photos::photo_home.dart::_Show_UploadState" {
+
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::Nursery_photos::photo_home.dart::_Show_UploadState"
+
+class "aou_nursery::mainFunctions::register_in_nursery::child_register.dart::Child_Register" {
+  {static} +String routeName
+  +State<Child_Register> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::register_in_nursery::child_register.dart::Child_Register"
+
+class "aou_nursery::mainFunctions::register_in_nursery::child_register.dart::_Child_RegisterState" {
+  +TextEditingController parentNameController
+  +TextEditingController childNameController
+  +TextEditingController childAgeController
+  +TextEditingController phoneNumberController
+  +TextEditingController dateTimerController
+  -GlobalKey<FormState> _formkey
+  -void _trySubmit()
+  +Widget build()
+  +Future<dynamic> creatUser()
+  +Widget buildNewsItem()
+}
+
+"aou_nursery::mainFunctions::register_in_nursery::child_register.dart::_Child_RegisterState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"aou_nursery::mainFunctions::register_in_nursery::child_register.dart::_Child_RegisterState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::register_in_nursery::child_register.dart::_Child_RegisterState"
+
+class "aou_nursery::mainFunctions::register_in_nursery::child_register.dart::ChildInfo" {
+
+  +String id
+  +String parentName
+  +String childName
+  +int childAge
+  +int phoneNumber
+  +DateTime date
+  +String attend
+  +Map<String, dynamic> toJson()
+  {static} +ChildInfo fromJson()
+}
+
+class "aou_nursery::mainFunctions::register_in_nursery::success.dart::Success" {
+  {static} +String routeName
+  +Widget build()
+  +Widget buildNewsItem()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::mainFunctions::register_in_nursery::success.dart::Success"
+
+class "aou_nursery::mainFunctions::reports::babysitter_report.dart::Babysitter_report" {
+
+  {static} +String routeName
+  +State<Babysitter_report> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::reports::babysitter_report.dart::Babysitter_report"
+
+class "aou_nursery::mainFunctions::reports::babysitter_report.dart::_Babysitter_reportState" {
+  +Widget build()
+  +Widget buildNotificationPanel()
+  +Widget buildNewsItem()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::reports::babysitter_report.dart::_Babysitter_reportState"
+
+class "aou_nursery::mainFunctions::reports::create_report.dart::Create_Report" {
+  {static} +String routeName
+  +State<Create_Report> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::reports::create_report.dart::Create_Report"
+
+class "aou_nursery::mainFunctions::reports::create_report.dart::_Create_ReportState" {
+
+  +File? sampleImage
+  +ImagePicker imagePicker
+  +GlobalKey<FormState> formKey
+  +String url
+  -String _myValue
+  +String? downloadURL
+  +Future<dynamic> getImage()
+  +bool validateAndSave()
+  +void uploadStatusImage()
+  +void saveToDatabase()
+  +void goToPostsHome()
+  +Widget build()
+  +Widget enableUpload()
+}
+
+"aou_nursery::mainFunctions::reports::create_report.dart::_Create_ReportState" o-- "dart::io::File"
+"aou_nursery::mainFunctions::reports::create_report.dart::_Create_ReportState" o-- "image_picker::image_picker.dart::ImagePicker"
+"aou_nursery::mainFunctions::reports::create_report.dart::_Create_ReportState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::reports::create_report.dart::_Create_ReportState"
+
+class "aou_nursery::mainFunctions::reports::post.dart::Post" {
+  +String image
+  +String description
+  +String date
+  +String time
+}
+
+class "aou_nursery::mainFunctions::reports::report_home.dart::Report_home" {
+  {static} +String routeName
+  +State<Report_home> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::mainFunctions::reports::report_home.dart::Report_home"
+
+class "aou_nursery::mainFunctions::reports::report_home.dart::_Report_homeState" {
+  +List<Post> postList
+  +List<String> KEYS
+  +List<dynamic> DATA
+  +Future<DatabaseEvent>? postRef
+  +void initState()
+  +void getFuture()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::mainFunctions::reports::report_home.dart::_Report_homeState"
+
+class "aou_nursery::parents::parents_main.dart::Parents_Main" {
+  {static} +String routeName
+  +State<Parents_Main> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::parents::parents_main.dart::Parents_Main"
+
+class "aou_nursery::parents::parents_main.dart::_Parents_MainState" {
+  -FirebaseAuth _auth
+  +User signedInUsrer
+  +void initState()
+  +void getCurrentUser()
+  +Widget build()
+  +Widget buildHeaderData()
+  +Widget buildBottomBar()
+  +Widget buildNotificationPanel()
+  +Widget buildBodyCardTitle()
+  +Widget buildNewsItem()
+}
+
+"aou_nursery::parents::parents_main.dart::_Parents_MainState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"aou_nursery::parents::parents_main.dart::_Parents_MainState" o-- "firebase_auth::firebase_auth.dart::User"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::parents::parents_main.dart::_Parents_MainState"
+
+class "aou_nursery::parents::parents_register.dart::ParentsRegister" {
+  {static} +String routeName
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::parents::parents_register.dart::ParentsRegister"
+
+class "aou_nursery::widgetsFolder::auth_form.dart::AouthForm" {
+  +String type
+  +State<AouthForm> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "aou_nursery::widgetsFolder::auth_form.dart::AouthForm"
+
+class "aou_nursery::widgetsFolder::auth_form.dart::_AouthFormState" {
+  +bool isLoading
+  -FirebaseAuth _auth
+  -FirebaseAuth _babyAuth
+  +DatabaseReference dbRef
+  -GlobalKey<FormState> _formkey
+  -String _userEmail
+  -String _userName
+  -String _userPassword
+  -void _loginBabysitter()
+  -void _loginParents()
+  +Future<dynamic> openBrowserURL()
+  -void _trySubmit()
+  +Widget build()
+}
+
+"aou_nursery::widgetsFolder::auth_form.dart::_AouthFormState" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"aou_nursery::widgetsFolder::auth_form.dart::_AouthFormState" o-- "firebase_database::firebase_database.dart::DatabaseReference"
+"aou_nursery::widgetsFolder::auth_form.dart::_AouthFormState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::State" <|-- "aou_nursery::widgetsFolder::auth_form.dart::_AouthFormState"
+
+class "aou_nursery::widgetsFolder::original_button.dart::OriginalButton" {
+  +String text
+  +void Function() onPressed
+  +Color textColor
+  +Color bgColor
+  +Widget build()
+}
+
+"aou_nursery::widgetsFolder::original_button.dart::OriginalButton" o-- "dart::ui::void Function()"
+"aou_nursery::widgetsFolder::original_button.dart::OriginalButton" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "aou_nursery::widgetsFolder::original_button.dart::OriginalButton"
+
+
+@enduml
